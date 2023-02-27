@@ -1,0 +1,76 @@
+# Take time to read
+# Consider different approaches
+# +-1 errors?
+# Got last item?
+
+
+from collections import Counter
+from collections import defaultdict, deque
+from pprint import pprint as pp
+from itertools import combinations
+from copy import deepcopy
+import math
+import sys
+
+filename = sys.argv[1]
+
+content = open(filename, 'r').read()
+content = content.split('\n\n')
+content = [c.strip() for c in content]
+
+total = 0
+
+
+def compare(left, right):
+    if isinstance(left, list) and isinstance(right, list):
+        if len(left) == 0 and len(right) > 0:
+            #print("1")
+            return True, 0
+        elif len(left) == 0 and len(right) == 0: # right?
+           print("2")
+           return True, 0
+        elif len(left) > 0 and len(right) == 0:
+            #print("3")
+            return False, 0
+        else: ## compare all children I guess?
+            index = 0
+            diff = -1
+            while True:
+                if len(left) == index:
+                    #print("4")
+                    return True, 0
+                if len(right) == index:
+                    if diff == 0:
+                        #print("5")
+                        return False, 0
+                    else:
+                        #print("6")
+                        return True, 0
+
+                res, a = compare(left[index], right[index])
+                diff = a
+                if not res:
+                    return False, 0
+                index+=1
+    if isinstance(left, list) and not isinstance(right, list):
+        return compare(left, [right])
+    elif not isinstance(left, list) and isinstance(right, list):
+        return compare([left], right)
+    else: # Both ints
+        return left <= right, right - left
+
+
+for (i, group) in enumerate(content):
+    left, right = group.split('\n')
+    
+    left = eval(left)
+    right = eval(right)
+    #if i != 6:
+    #    continue
+    ok, diff = compare(left, right)
+    if ok:
+        print("YES", i+1)
+        total += (i+1)
+print("tot", total)
+    
+

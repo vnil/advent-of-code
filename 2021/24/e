@@ -1,0 +1,3 @@
+inp x 1
+add y x
+div y 4

@@ -1,0 +1,18 @@
+
+grid = deepcopy(content)
+while True:
+    grid = deepcopy(grid)
+    for y in range(len(grid)):
+        print(len(grid[y]))
+        for x in range(len(grid[y])):
+            if grid[y][c] in valid_carts:
+                dir_marker = grid[y][c]
+                new_dir = carts[(y, x)] + 1 % 3
+                new_dir -= 1
+                new_char = cart_list[cart_list.index(dir_marker) + new_dir]
+                new_y, new_x = cart_dir[new_char]
+                if grid[new_y][new_x] in valid_carts:
+                    print(new_x, new_y)
+                    return
+                else:
+                    grid[new_y][new_x] = new_char

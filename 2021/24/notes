@@ -1,0 +1,31 @@
+#1
+w = inläst siffra
+x = 1
+y = w+1
+z = w+1
+
+#2
+w = inläst siffra
+x = 1 oförändrad
+y = w+1
+y = w+1
+
+
+#3
+w = oförändrad
+x = oförändrad
+y = oförändrad
+y = oförändrad
+
+
+#4
+w = oförändrad
+x = oförändrad
+y = oförändrad
+y = oförändrad
+
+#5
+w = oförändrad
+x = oförändrad
+y = oförändrad
+y = oförändrad
